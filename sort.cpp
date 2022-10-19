@@ -50,12 +50,39 @@ void bubble_sort(std::vector<int> &arr)
                 std::swap(arr[j - 1], arr[j]);
 }
 
+/*
+    Unstable sorting algorithm
+    Time complexity: O(nlogn)
+    Space complexity: O(1)
+*/
+void quick_sort(std::vector<int> &arr, int low, int high)
+{
+    if (low < high)
+    {
+        int i = low, j = high, pivot = arr[low];
+        while (i < j)
+        {
+            while (i < j && arr[j] >= pivot)
+                --j;
+            arr[i] = arr[j];
+            while (i < j && arr[i] <= pivot)
+                ++i;
+            arr[j] = arr[i];
+        }
+        arr[i] = pivot;
+        pivot = i;
+        quick_sort(arr, low, pivot - 1);
+        quick_sort(arr, pivot + 1, high);
+    }
+}
+
 int main(int argc, const char *argv[])
 {
     std::vector<int> a{15, 5, 2, 7, 12, 6, 1, 4, 3, 9, 8, 10};
     // insertion_sort(a);
     // shell_sort(a);
-    bubble_sort(a);
+    // bubble_sort(a);
+    quick_sort(a, 0, a.size() - 1);
     print_arrary(a);
     return 0;
 }

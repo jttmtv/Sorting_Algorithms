@@ -33,8 +33,8 @@ void shell_sort(std::vector<int> &arr)
 {
     for (int gap = arr.size() / 2; gap > 0; gap /= 2)
         for (int i = gap; i < arr.size(); ++i)
-            for (int j = i; j >= gap && arr[j] < arr[j - gap]; j -= gap)
-                std::swap(arr[j], arr[j - gap]);
+            for (int j = i; j >= gap && arr[j - gap] > arr[j]; j -= gap)
+                std::swap(arr[j - gap], arr[j]);
 }
 
 /*

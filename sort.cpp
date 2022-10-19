@@ -5,7 +5,7 @@
 /*
     Print the array elements in ascending order
 */
-void print_arrary(std::vector<int> arr)
+void print_arrary(std::vector<int> &arr)
 {
     for (int elem : arr)
         std::cout << elem << " ";

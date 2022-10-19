@@ -76,13 +76,33 @@ void quick_sort(std::vector<int> &arr, int low, int high)
     }
 }
 
+/*
+    Unstable sorting algorithm
+    Time complexity: O(n^2)
+    Space complexity: O(1)
+*/
+void selection_sort(std::vector<int> &arr)
+{
+    for (int i = 0; i < arr.size() - 1; ++i)
+    {
+        int j = i;
+        for (int k = i + 1; k < arr.size(); ++k)
+        {
+            if (arr[k] < arr[j])
+                j = k;
+        }
+        std::swap(arr[i], arr[j]);
+    }
+}
+
 int main(int argc, const char *argv[])
 {
     std::vector<int> a{15, 5, 2, 7, 12, 6, 1, 4, 3, 9, 8, 10};
     // insertion_sort(a);
     // shell_sort(a);
     // bubble_sort(a);
-    quick_sort(a, 0, a.size() - 1);
+    // quick_sort(a, 0, a.size() - 1);
+    selection_sort(a);
     print_arrary(a);
     return 0;
 }
